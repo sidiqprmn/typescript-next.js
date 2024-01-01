@@ -39,12 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
       this.lastScroll = $(window).scrollTop();
     }
 
-    onResize() {
-      if (this.currentId) {
-        this.setSliderCss();
-      }
-    }
-
     checkHeaderPosition() {
       const headerHeight = 75;
       const isScrolled = $(window).scrollTop() > headerHeight;
@@ -65,11 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
       $(".nav-container").toggleClass("nav-container--top-second", isMoveUp);
     }
 
-    findCurrentTabSelector() {
-      let newCurrentId;
-      let newCurrentTab;
-      let self = this;
-
       $(".nav-tab").each(function () {
         let id = $(this).attr("href");
         let offsetTop = $(id).offset().top - self.tabContainerHeight;
@@ -81,12 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
           newCurrentTab = $(this);
         }
       });
-
-      if (this.currentId !== newCurrentId || this.currentId === null) {
-        this.currentId = newCurrentId;
-        this.currentTab = newCurrentTab;
-        this.setSliderCss();
-      }
     }
 
     setSliderCss() {
